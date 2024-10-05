@@ -11,6 +11,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<RatingDbContext>(opt => { opt.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")); });
 
 builder.Services.AddScoped<IProviderService, ProviderService>();
+builder.Services.AddScoped<IRatingService, RatingService.Services.RatingService>();
 
 var app = builder.Build();
 

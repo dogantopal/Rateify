@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace RatingService.Models;
 
-public class GetAverageRatingRequestModel
+public record GetAverageRatingRequestModel
 {
     [Range(1, long.MaxValue, ErrorMessage = "Please enter a value bigger than 0.")]
     [FromRoute(Name = "id")]

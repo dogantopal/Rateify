@@ -10,7 +10,7 @@ public class ProviderService(RatingDbContext dbContext) : IProviderService
         var provider = await dbContext.Providers.FindAsync(providerId);
 
         return provider == null
-            ? throw new Exception($"Provider not exist with given id:{providerId}")  //TODO: log
+            ? throw new Exception($"Provider not exist with given id:{providerId}")  //TODO: send service exception and create log
             : new GetAverageRatingResponseModel(provider.Id, provider.Name, provider.AverageRating);
     }
 }

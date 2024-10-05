@@ -53,25 +53,29 @@ public abstract class DbInitializer
             {
                 Point = 3.2,
                 CustomerId = 1,
-                ProviderId = 1
+                ProviderId = 1,
+                CreatedAt = DateTime.UtcNow
             },
             new()
             {
                 Point = 2,
                 CustomerId = 2,
-                ProviderId = 1
+                ProviderId = 1,
+                CreatedAt = DateTime.UtcNow
             },
             new()
             {
                 Point = 5,
                 CustomerId = 3,
-                ProviderId = 1
+                ProviderId = 1,
+                CreatedAt = DateTime.UtcNow
             },
             new()
             {
                 Point = 4,
                 CustomerId = 1,
-                ProviderId = 2
+                ProviderId = 2,
+                CreatedAt = DateTime.UtcNow
             }
         };
 
