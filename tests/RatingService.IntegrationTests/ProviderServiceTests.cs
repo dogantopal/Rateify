@@ -1,5 +1,7 @@
 using AutoFixture;
 using FluentAssertions;
+using Microsoft.Extensions.Logging;
+using Moq;
 using RatingService.Data.Entities;
 using RatingService.Models;
 using RatingService.Services;
@@ -12,7 +14,8 @@ public class ProviderServiceTests : BaseIntegrationTest
 
     public ProviderServiceTests(IntegrationTestWebAppFactory factory) : base(factory)
     {
-        _providerService = new ProviderService(DbContext);
+         var loggerMock = new Mock<ILogger<ProviderService>>();
+        _providerService = new ProviderService(DbContext, loggerMock.Object);
     }
 
     [Fact]

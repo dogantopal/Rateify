@@ -4,8 +4,12 @@ using RatingService.Consumers;
 using RatingService.Data;
 using RatingService.Middlewares;
 using RatingService.Services;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog((hostingContext, loggerConfiguration) =>
+    loggerConfiguration.ReadFrom.Configuration(hostingContext.Configuration));
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -56,6 +60,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseSerilogRequestLogging();
+
 app.UseMiddleware<ExceptionMiddleware>();
 app.MapControllers();
 
@@ -65,7 +71,7 @@ try
 }
 catch (Exception ex)
 {
-    //TODO add log.
+    Log.Fatal(ex, "An error occurred while register the database.");
 }
 
 app.Run();

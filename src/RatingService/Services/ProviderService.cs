@@ -6,7 +6,7 @@ using RatingService.Models;
 
 namespace RatingService.Services;
 
-public class ProviderService(RatingDbContext dbContext) : IProviderService
+public class ProviderService(RatingDbContext dbContext, ILogger<ProviderService> logger) : IProviderService
 {
     public async Task<GetAverageRatingResponseModel> GetAverageRatingByIdAsync(long providerId)
     {
@@ -14,7 +14,7 @@ public class ProviderService(RatingDbContext dbContext) : IProviderService
 
         if (provider is null)
         {
-            //TODO add log.
+            logger.LogError("Provider not exist with given id:{providerId}", providerId);
             throw new ServiceException(HttpStatusCode.NotFound, $"Provider not exist with given id:{providerId}");
         }
 
@@ -27,7 +27,7 @@ public class ProviderService(RatingDbContext dbContext) : IProviderService
 
         if (provider is null)
         {
-            //TODO add log.
+            logger.LogError("Provider not exist with given id:{providerId}", providerId);
             throw new ServiceException(HttpStatusCode.NotFound, $"Provider not exist with given id:{providerId}");
         }
 

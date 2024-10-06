@@ -33,8 +33,9 @@ public class RatingService(RatingDbContext dbContext, ILogger<RatingService> log
 
         if (!result)
         {
-            //TODO add log.
-            throw new ServiceException(HttpStatusCode.InternalServerError, $"Error when saving rating to db");
+            var errorMessage = "Error when saving rating to db";
+            logger.LogError(errorMessage);
+            throw new ServiceException(HttpStatusCode.InternalServerError, errorMessage);
         }
 
         logger.LogInformation("Created rating with id: {ratingId}", rating.Id);
