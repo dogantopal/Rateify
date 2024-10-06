@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# 
+#
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A7F36864-730F-482E-9449-0E8134849E4B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RatingService", "src\RatingService\RatingService.csproj", "{A475445E-72C1-4674-B516-DFA3F9B8E530}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "src\Contracts\Contracts.csproj", "{710594C5-A275-4B9B-B7C0-4DEE7A5A0C6F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,13 @@ Global
 		{A475445E-72C1-4674-B516-DFA3F9B8E530}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A475445E-72C1-4674-B516-DFA3F9B8E530}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A475445E-72C1-4674-B516-DFA3F9B8E530}.Release|Any CPU.Build.0 = Release|Any CPU
+		{710594C5-A275-4B9B-B7C0-4DEE7A5A0C6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{710594C5-A275-4B9B-B7C0-4DEE7A5A0C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{710594C5-A275-4B9B-B7C0-4DEE7A5A0C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{710594C5-A275-4B9B-B7C0-4DEE7A5A0C6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A475445E-72C1-4674-B516-DFA3F9B8E530} = {A7F36864-730F-482E-9449-0E8134849E4B}
+		{710594C5-A275-4B9B-B7C0-4DEE7A5A0C6F} = {A7F36864-730F-482E-9449-0E8134849E4B}
 	EndGlobalSection
 EndGlobal

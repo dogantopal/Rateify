@@ -1,10 +1,12 @@
+using Contracts;
+using MassTransit;
 using RatingService.Data;
 using RatingService.Data.Entities;
 using RatingService.Models;
 
 namespace RatingService.Services;
 
-public class RatingService(RatingDbContext dbContext, ILogger<RatingService> logger) : IRatingService
+public class RatingService(RatingDbContext dbContext, ILogger<RatingService> logger, IPublishEndpoint publishEndpoint) : IRatingService
 {
     public async Task CreateRatingAsync(CreateRatingRequestModel createRatingRequest)
     {
@@ -17,8 +19,13 @@ public class RatingService(RatingDbContext dbContext, ILogger<RatingService> log
         };
 
         dbContext.Ratings.Add(rating);
-
-        //TODO produce event
+        
+        var ratingCreatedMessage = new RatingCreated
+        {
+            Point = rating.Point,
+            ProviderId = rating.ProviderId
+        };
+        await publishEndpoint.Publish(ratingCreatedMessage);
 
         var result = await dbContext.SaveChangesAsync() > 0;
 

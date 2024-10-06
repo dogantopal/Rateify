@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using RatingService.Data;
@@ -11,9 +12,11 @@ using RatingService.Data;
 namespace RatingService.Data.Migrations
 {
     [DbContext(typeof(RatingDbContext))]
-    partial class RatingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241006075908_AddOutboxTables")]
+    partial class AddOutboxTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
