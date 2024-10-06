@@ -1,7 +1,9 @@
+using System.Net;
 using Contracts;
 using MassTransit;
 using RatingService.Data;
 using RatingService.Data.Entities;
+using RatingService.Errors;
 using RatingService.Models;
 
 namespace RatingService.Services;
@@ -30,7 +32,10 @@ public class RatingService(RatingDbContext dbContext, ILogger<RatingService> log
         var result = await dbContext.SaveChangesAsync() > 0;
 
         if (!result)
-            throw new Exception("Error when saving rating to db"); //TODO send service exception and log
+        {
+            //TODO add log.
+            throw new ServiceException(HttpStatusCode.InternalServerError, $"Error when saving rating to db");
+        }
 
         logger.LogInformation("Created rating with id: {ratingId}", rating.Id);
     }

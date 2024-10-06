@@ -1,0 +1,9 @@
+using System.Net;
+
+namespace RatingService.Errors;
+
+public class ServiceException(HttpStatusCode code, string errorMessage) : Exception
+{
+    public HttpStatusCode Code { get; set; } = code;
+    public string ErrorMessage { get; set; } = errorMessage;
+}

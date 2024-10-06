@@ -1,6 +1,7 @@
 using MassTransit;
 using NotificationService.Consumers;
 using NotificationService.Infrastructure;
+using NotificationService.Middlewares;
 using NotificationService.Services;
 using StackExchange.Redis;
 
@@ -54,6 +55,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<ExceptionMiddleware>();
 app.MapControllers();
 
 app.Run();

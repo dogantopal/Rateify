@@ -2,6 +2,7 @@ using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using RatingService.Consumers;
 using RatingService.Data;
+using RatingService.Middlewares;
 using RatingService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -55,6 +56,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<ExceptionMiddleware>();
 app.MapControllers();
 
 try
@@ -63,7 +65,7 @@ try
 }
 catch (Exception ex)
 {
-    //TODO: log
+    //TODO add log.
 }
 
 app.Run();
